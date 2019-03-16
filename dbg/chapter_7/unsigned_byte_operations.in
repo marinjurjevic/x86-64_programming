@@ -1,0 +1,47 @@
+# --------------------------
+#   Debugger Input Script
+#   file: chapter7/unsigned_byte_operations.asm
+# --------------------------
+
+echo \n\n
+break last
+run
+set pagination off
+set logging file unsigned_byte_operations.out
+set logging overwrite
+set logging on
+set prompt
+
+echo \n
+
+echo bAns1 \t
+x/ub &bAns1
+echo bAns2 \t
+x/ub &bAns2
+echo bAns3 \t
+x/ub &bAns3
+
+# display as signed for subtraction operations
+echo bAns6 \t
+x/db &bAns6
+echo bAns7 \t
+x/db &bAns7
+echo bAns8 \t
+x/db &bAns8
+
+echo wAns11 \t
+x/uh &wAns11
+echo wAns12 \t
+x/uh &wAns12
+echo wAns13 \t
+x/uh &wAns13
+echo bAns16 \t
+x/ub &bAns16
+echo bAns17 \t
+x/ub &bAns17
+echo bAns18 \t
+x/ub &bAns18
+echo bAns18 \t
+i r ah
+set logging off
+quit

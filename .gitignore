@@ -1,0 +1,14 @@
+# Visual Code settings
+.vscode/
+
+# Build folders
+bin/
+
+# Object files
+*.o 
+
+# List files
+*.lst
+
+# gdb output files
+*.out
