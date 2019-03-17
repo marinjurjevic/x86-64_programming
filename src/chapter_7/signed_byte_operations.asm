@@ -1,6 +1,6 @@
 ; Chapter 7 
 ; 7.9.2 Suggested Projects
-; 1) Create a program to compute various unsigned
+; 2) Create a program to compute various signed
 ;    arithmetic expressions
 
 ; ***********************************
@@ -10,9 +10,9 @@ section         .data
 
 ; operands
 bNum1           db      10
-bNum2           db      20
+bNum2           db      -20
 bNum3           db      30
-bNum4           db      40
+bNum4           db      -40
 
 wNum1           dw      350
 
@@ -81,32 +81,32 @@ _start:
 
         ; wAns11 = bNum1 * bNum2
         mov     al, byte [bNum1]
-        mul     byte [bNum2]
+        imul    byte [bNum2]
         mov     word [wAns11], ax
 
         ; wAns12 = bNum2 * bNum2
         mov     al , byte [bNum2]
-        mul     al
+        imul    al
         mov     word [wAns12], ax
 
         ; wAns13 = bNum2 * bNum4
         mov     al, byte [bNum2]
-        mul     byte [bNum4]
+        imul    byte [bNum4]
         mov     word [wAns13], ax
         
         ; bAns16 = bNum1 / bNum2
-        movzx   ax, byte [bNum1]
-        div     byte [bNum2]
+        movsx   ax, byte [bNum1]
+        idiv    byte [bNum2]
         mov     byte [bAns16], al
 
         ; bAns17 = bNum3 / bNum4
-        movzx   ax, byte [bNum3]
-        div     byte [bNum4]
+        movsx   ax, byte [bNum3]
+        idiv    byte [bNum4]
         mov     byte [bAns17], al
 
         ; bAns18 = wNum1 / bNum4
         mov     ax, word [wNum1]
-        div     byte [bNum4]
+        idiv    byte [bNum4]
         mov     byte [bAns18], al
 
         ; bRem18 = wNum1 % bNum4 

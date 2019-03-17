@@ -1,0 +1,77 @@
+# --------------------------
+#   Debugger Input Script
+#   File: chapter_7/unsigned_byte_operations.asm
+#   File: chapter_7/signed_byte_operations.asm
+# --------------------------
+
+# **********************
+#       FUNCTIONS
+# **********************
+
+# print BYTES (8-bit) in 
+#       - unsigned decimal
+#       - signed decimal 
+#       - hexadecimal format
+#       - binary format
+
+define print_bytes
+  echo $arg0 \n
+  x/ub $arg1
+  x/db $arg1
+  x/xb $arg1
+  x/tb $arg1 
+  echo \n
+end
+
+# print WORDS (16-bit) in 
+#       - unsigned decimal
+#       - signed decimal 
+#       - hexadecimal format
+#       - binary format
+
+define print_words
+  echo $arg0 \n
+  x/uh $arg1
+  x/dh $arg1
+  x/xh $arg1
+  x/th $arg1 
+  echo \n
+end
+
+# **********************
+#       COMMANDS
+# **********************
+
+echo \n\n
+break last
+run
+set pagination off
+set logging file byte_operations.out
+set logging overwrite
+set logging on
+set prompt
+
+echo \n
+
+print_bytes bAns1 &bAns1
+print_bytes bAns2 &bAns2
+print_bytes bAns3 &bAns3
+
+echo *** Notice unsigned representation of negative numbers *** \n
+
+print_bytes bAns6 &bAns6
+print_bytes bAns7 &bAns7
+print_bytes bAns8 &bAns8
+
+print_words wAns11 &wAns11
+print_words wAns12 &wAns12
+print_words wAns13 &wAns13
+
+print_bytes bAns16 &bAns16
+print_bytes bAns17 &bAns17
+print_bytes bAns18 &bAns18
+echo bRem18 \t
+i r ah
+
+set logging off
+quit
