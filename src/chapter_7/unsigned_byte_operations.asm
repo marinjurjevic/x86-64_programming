@@ -1,7 +1,7 @@
 ; Chapter 7 
 ; 7.9.2 Suggested Projects
 ; 1) Create a program to compute various unsigned
-;    arithmetic expressions
+;    byte arithmetic expressions
 
 ; ***********************************
 ; Data declarations
@@ -79,9 +79,9 @@ _start:
         sub     al, byte [bNum4]
         mov     byte [bAns8], al
 
-        ; wAns11 = bNum1 * bNum2
+        ; wAns11 = bNum1 * bNum3
         mov     al, byte [bNum1]
-        mul     byte [bNum2]
+        mul     byte [bNum3]
         mov     word [wAns11], ax
 
         ; wAns12 = bNum2 * bNum2

@@ -1,0 +1,77 @@
+# --------------------------
+#   Debugger Input Script
+#   File: chapter_7/unsigned_word_operations.asm
+#   File: chapter_7/signed_word_operations.asm
+# --------------------------
+
+# **********************
+#       FUNCTIONS
+# **********************
+
+# print WORDS (16-bit) in 
+#       - unsigned decimal
+#       - signed decimal 
+#       - hexadecimal format
+#       - binary format
+
+define print_words
+  echo $arg0 \n
+  x/uh $arg1
+  x/dh $arg1
+  x/xh $arg1
+  x/th $arg1 
+  echo \n
+end
+
+# print DOUBLE WORDS (32-bit) in 
+#       - unsigned decimal
+#       - signed decimal 
+#       - hexadecimal format
+#       - binary format
+
+define print_double_words
+  echo $arg0 \n
+  x/uw $arg1
+  x/dw $arg1
+  x/xw $arg1
+  x/tw $arg1 
+  echo \n
+end
+
+# **********************
+#       COMMANDS
+# **********************
+
+echo \n\n
+break last
+run
+set pagination off
+set logging file word_operations.out
+set logging overwrite
+set logging on
+set prompt
+
+echo \n
+
+print_words wAns1 &wAns1
+print_words wAns2 &wAns2
+print_words wAns3 &wAns3
+
+echo *** Notice unsigned representation of negative numbers *** \n
+
+print_words wAns6 &wAns6
+print_words wAns7 &wAns7
+print_words wAns8 &wAns8
+
+print_double_words dAns11 &dAns11
+print_double_words dAns12 &dAns12
+print_double_words dAns13 &dAns13
+
+print_words wAns16 &wAns16
+print_words wAns17 &wAns17
+print_words wAns18 &wAns18
+echo wRem18 \t
+i r dx
+
+set logging off
+quit

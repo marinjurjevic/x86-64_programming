@@ -1,0 +1,77 @@
+# --------------------------
+#   Debugger Input Script
+#   File: chapter_7/unsigned_double_word_operations.asm
+#   File: chapter_7/signed_double_word_operations.asm
+# --------------------------
+
+# **********************
+#       FUNCTIONS
+# **********************
+
+# print DOUBLE WORDS (32-bit) in 
+#       - unsigned decimal
+#       - signed decimal 
+#       - hexadecimal format
+#       - binary format
+
+define print_double_words
+  echo $arg0 \n
+  x/uw $arg1
+  x/dw $arg1
+  x/xw $arg1
+  x/tw $arg1 
+  echo \n
+end
+
+# print QUAD WORDS (32-bit) in 
+#       - unsigned decimal
+#       - signed decimal 
+#       - hexadecimal format
+#       - binary format
+
+define print_quad_words
+  echo $arg0 \n
+  x/ug $arg1
+  x/dg $arg1
+  x/xg $arg1
+  x/tg $arg1 
+  echo \n
+end
+
+# **********************
+#       COMMANDS
+# **********************
+
+echo \n\n
+break last
+run
+set pagination off
+set logging file double_word_operations.out
+set logging overwrite
+set logging on
+set prompt
+
+echo \n
+
+print_double_words dAns1 &dAns1
+print_double_words dAns2 &dAns2
+print_double_words dAns3 &dAns3
+
+echo *** Notice unsigned representation of negative numbers *** \n
+
+print_double_words dAns6 &dAns6
+print_double_words dAns7 &dAns7
+print_double_words dAns8 &dAns8
+
+print_quad_words qAns11 &qAns11
+print_quad_words qAns12 &qAns12
+print_quad_words qAns13 &qAns13
+
+print_double_words dAns16 &dAns16
+print_double_words dAns17 &dAns17
+print_double_words dAns18 &dAns18
+echo dRem18 \t
+i r edx
+
+set logging off
+quit
