@@ -1,0 +1,43 @@
+# --------------------------
+#   Debugger Input Script
+#   File: chapter_7/square_of_sum
+# --------------------------
+
+# **********************
+#       FUNCTIONS
+# **********************
+
+# print QUAD WORDS (64-bit) in 
+#       - unsigned decimal
+#       - signed decimal 
+#       - hexadecimal format
+#       - binary format
+
+define print_quad_words
+  echo $arg0 \n
+  x/ug $arg1
+  x/dg $arg1
+  x/xg $arg1
+  x/tg $arg1 
+  echo \n
+end
+
+# **********************
+#       COMMANDS
+# **********************
+
+echo \n\n
+break last
+run
+set pagination off
+set logging file squre_of_sum.out
+set logging overwrite
+set logging on
+set prompt
+
+echo \n
+
+print_quad_words squareOfSum &squareOfSum
+
+set logging off
+quit
