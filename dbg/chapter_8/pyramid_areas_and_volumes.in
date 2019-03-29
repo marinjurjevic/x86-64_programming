@@ -1,0 +1,51 @@
+# --------------------------
+#   Debugger Input Script
+#   File: chapter_8/pyramid_areas_and_volumes.asm
+# --------------------------
+
+# **********************
+#       FUNCTIONS
+# **********************
+
+# print DOUBLE WORDS (32-bit) in 
+#       - unsigned decimal
+#       - signed decimal 
+#       - hexadecimal format
+#       - binary format
+
+define print_double_words
+  echo $arg0 \n
+  x/uw $arg1
+  x/dw $arg1
+  x/xw $arg1
+  x/tw $arg1 
+  echo \n
+end
+
+# **********************
+#       COMMANDS
+# **********************
+
+echo \n\n
+break last
+run
+set pagination off
+set logging file list_summation.out
+set logging overwrite
+set logging on
+set prompt
+
+echo \n
+
+print_double_words taMin &taMin
+print_double_words taMax &taMax 
+print_double_words taSum &taSum
+print_double_words taAve &taAve
+
+print_double_words volMin &volMin
+print_double_words volMax &volMax 
+print_double_words volSum &volSum
+print_double_words volAve &volAve
+
+set logging off
+quit
