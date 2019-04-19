@@ -40,6 +40,6 @@ $ gdb -x dbg/chapter_7/unsigned_byte_operations.in bin/chapter_7/unsigned_byte_o
 
 ### TODO
 - [x] Chapter 7
-- [ ] Chapter 8
+- [x] Chapter 8
 - [ ] Chapter 9
 - ...
