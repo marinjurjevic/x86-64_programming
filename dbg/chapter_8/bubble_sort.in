@@ -1,0 +1,35 @@
+# --------------------------
+#   Debugger Input Script
+#   File: chapter_8/bubble_sort.asm
+# --------------------------
+
+# **********************
+#       FUNCTIONS
+# **********************
+
+# print array of n DOUBLE WORDS (32-bit) in 
+
+define print_dw_array
+  p (int[$arg0]) $arg1
+  echo \n
+end
+
+# **********************
+#       COMMANDS
+# **********************
+
+echo \n\n
+break last
+run
+set pagination off
+set logging file bubble_sort.out
+set logging overwrite
+set logging on
+set prompt
+
+echo \n
+
+print_dw_array 10 numbers
+
+set logging off
+quit
