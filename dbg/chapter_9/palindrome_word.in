@@ -1,0 +1,27 @@
+# --------------------------
+#   Debugger Input Script
+#   File: chapter_9/palindrome_word.asm
+# --------------------------
+
+# **********************
+#       COMMANDS
+# **********************
+
+echo \n\n
+break last
+run
+set pagination off
+set logging file palindrome_word.out
+set logging overwrite
+set logging on
+set prompt
+
+echo \n
+
+echo 1 - word is palindrome, 0 - word is not palindrome \nResult ---|
+x/db &result
+
+echo \n
+
+set logging off
+quit
